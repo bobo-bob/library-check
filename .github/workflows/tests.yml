@@ -22,9 +22,16 @@ jobs:
           python -m pip install mlflow pytorch-lightning
           pip freeze
 
-      - name: Test
+      - name: Test mlflow
         run: |
           echo "${MLFLOW_TRACKING_URI}"
           python -c "import mlflow as mf"
+        env:
+          MLFLOW_TRACKING_URI: "file://mlflow-runs"
+
+      - name: Test lightning
+        run: |
+          echo "${MLFLOW_TRACKING_URI}"
+          python -c "import pytorch_lightning as pl"
         env:
           MLFLOW_TRACKING_URI: "file://mlflow-runs"
