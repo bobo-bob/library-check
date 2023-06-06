@@ -25,3 +25,5 @@ jobs:
       - name: Test
         run: |
           python -c "import mlflow as mf"
+        env:
+          MLFLOW_TRACKING_URI: "file://mlflow-runs"
